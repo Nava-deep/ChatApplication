@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signin</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+    <script src="{% static 'js/signin.js' %}"></script>
+</head>
+<body>
+    <form action="." method="POST" id="form">
+        {% csrf_token %}
+        <h1 id="signin">Signin</h1>
+        <input type="text" name="username" placeholder="Username:" id="username">
+        <input type="email" name="email" placeholder="email" id="email">
+        <input type="password" name="password" id="password" placeholder="Password:">
+        <input type="submit" value="Submit" id="submit">
+        <input type="hidden" value="{{csrf_token}}" id="csrf">
+        <div id="u">Already have an acoount <a href="{% url 'login' %}">Login</a></div>
+    </form>
+</body>
+</html>
