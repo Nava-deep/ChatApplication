@@ -27,7 +27,7 @@ form{
     position: relative;
 }
 
-input, div{
+input{
     height: 50px;
     width: 60%;
     display: block;

@@ -14,10 +14,12 @@
         {% csrf_token %}
         <h1 id="login">Login</h1>
         <input type="text" name="username" placeholder="Username:" id="username">
+        <h3 id="h1" hidden>Username not found</h3>
         <input type="password" name="password" id="password" placeholder="Password:">
+        <h3 id="h2" hidden>Password incorrect</h3>
         <input type="submit" value="Submit" id="submit">
         <input type="hidden" value="{{csrf_token}}" id="csrf" data-url="{% url 'login' %}">
-        <div id="u">Did'nt have an account <a href="{% url 'signin' %}">Signin Now</a></div>
+        <h1 id="u">Did'nt have an account <a href="{% url 'signin' %}">Signin Now</a></h1>
     </form>
 </body>
 </html>

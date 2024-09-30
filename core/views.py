@@ -8,7 +8,6 @@ from django.core.files.storage import FileSystemStorage as FS
 
 def check_login(request):
     if request.user.is_authenticated:
-        print(request.user.username)
         return render(request,'home.html')
     return redirect('login')
 
@@ -22,10 +21,11 @@ def Login(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
+        if not User.objects.filter(username=username).exists():return JsonResponse({"token":3})
         user = authenticate(request,username=username,password=password)
         if user:
-            login(request,user)
-            return redirect('home')
+            login(request,user) 
+            return JsonResponse({"url":reverse('home')})
         return JsonResponse({"token":1})
     return render(request,'login.html',{'token':2})
 
@@ -34,14 +34,14 @@ def signin(request):
         username = request.POST['username']
         password = request.POST['password']
         email = request.POST['email']
-        if User.objects.filter(username=username).exists():
-            return JsonResponse({"token":1})
+        if User.objects.filter(username=username).exists():return JsonResponse({"token":1})
+        elif User.objects.filter(email=email).exists():return JsonResponse({"token":2})
         else:
             user = User.objects.create_user(username=username,password=password,email=email)
             user.save()
             login(request,user)
-            return redirect('home')    
-    return render(request,'signin.html',{'token':1})
+            return JsonResponse({"url":reverse('home')})
+    return render(request,'signin.html',{'token':3})
 
 def Logout(request):
     logout(request)
