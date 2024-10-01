@@ -10,7 +10,7 @@ $(document).ready(()=>{
         $("#h2").hide();
     })
 
-    $('#form').on("submit",(e)=>{
+    $('#form').on("submit click",(e)=>{
         e.preventDefault();
         $.ajax({
             type:"POST",
