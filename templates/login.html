@@ -10,7 +10,7 @@
     <script src="{% static 'js/login.js' %}"></script>
 </head>
 <body>
-    <form action="." method="POST" id="form">
+    <form action="." method="POST" >
         {% csrf_token %}
         <h1 id="login">Login</h1>
         <input type="text" name="username" placeholder="Username:" id="username">

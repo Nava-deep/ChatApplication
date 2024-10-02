@@ -14,8 +14,11 @@ body{
 }
 
 form{
+    overflow: auto;
     width: 35%;
     height: 70%;
+    min-height: 300px;
+    max-width: 500px;
     box-shadow: 0px 0px 5px 1px black;
     display: flex;
     flex-direction: column;
@@ -24,12 +27,15 @@ form{
     align-items:center;
     border-radius: 20px;
     transition: all 100ms;
-    position: relative;
+    flex-wrap: nowrap;
 }
 
 input{
     height: 50px;
     width: 60%;
+    min-height: 50px;
+    flex-grow: 0;
+    flex-shrink: 0;
     display: block;
     border: 2px solid black;
     border-radius: 10px;
@@ -69,8 +75,7 @@ a{
 
 #login{
     font-size: 50px;
-    position: absolute;
-    top: 10px;
+    margin-top: -50px;
 }
 
 #u{

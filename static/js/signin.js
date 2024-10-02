@@ -1,16 +1,16 @@
 $(document).ready((e)=>{
 
-    $("#username").on("focus",(e)=>{
-        $("#username").css({"border":"2px solid black"}).removeClass("animate");
+    $("#username").on("focus click",(e)=>{
+        $("#username").css({"border":"2px solid black"});
         $("#h1").hide();
     })
 
     $("#email").on("focus click",(e)=>{
-        $("#email").css({"border":"2px solid black"}).removeClass("animate");
+        $("#email").css({"border":"2px solid black"});
         $("#h2").hide();
     })
 
-    $('#form').on("submit",(e)=>{
+    $('#submit').on("submit click",(e)=>{
         e.preventDefault();
         $.ajax({
             type:"POST",
@@ -27,17 +27,26 @@ $(document).ready((e)=>{
                     $("#username").css({"border":"2px solid red"});
                     $("#h1").show().css({"color":"red",'margin-top':'-20px','margin-bottom':'0px'});
                     $("#username").css("position", "relative");
-                    $("#username").animate({ left: "-200px" }, 100,"easeInBounce")
-                                  .animate({ left: "400px" }, 100,"easeInBounce")
-                                  .animate({ left: "-400px" }, 100,"easeInBounce")
-                                  .animate({ left: "400px" }, 100,"easeInBounce")
-                                  .animate({ left: "-400px" }, 100,"easeInBounce")
-                                  .animate({ left: "0px" }, 100,"easeInBounce")
+                    $("#username").animate({"left":"-200px"},50)
+                                  .animate({"left":"200px"},50)
+                                  .animate({"left":"-100px"},50)
+                                  .animate({"left":"100px"},50)
+                                  .animate({"left":"-50px"},50)
+                                  .animate({"left":"50px"},50)
+                                  .animate({"left":"0px"},50)
                 }
                 else if(w.token == 2)
                 {
                     $("#email").css({"border":"2px solid red"})
-                    $("#h2").show().css({"color":"red",'margin-top':'-20px','margin-bottom':'0px'}).addClass("animate");
+                    $("#h2").show().css({"color":"red",'margin-top':'-20px','margin-bottom':'0px'});
+                    $("#email").css("position", "relative");
+                    $("#email").animate({"left":"-200px"},50)
+                                  .animate({"left":"200px"},50)
+                                  .animate({"left":"-100px"},50)
+                                  .animate({"left":"100px"},50)
+                                  .animate({"left":"-50px"},50)
+                                  .animate({"left":"50px"},50)
+                                  .animate({"left":"0px"},50)
                 }
                 else{
                     window.location.href = w.url;

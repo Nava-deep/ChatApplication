@@ -1,15 +1,15 @@
 $(document).ready(()=>{
-    $("#b").click((e)=>{
-    $.ajax({
-        type: "POST",
-        url: $("#a").val(),
-        data: {
-            token:1,
-            csrfmiddlewaretoken:$("#c").val(),
-        },
-        success:(d)=>{
-            window.location.href = d.url;
-        }
-    });
-})
+
+    $("#d").css({"background":"red","width":"10px","height":"100px","margin-left":"50%"})
+    $("#hello").css("margin-left","50%")
+    $("#hello").click((e)=>{
+        $("#hello").css({"position":"relative"})
+        $("#hello").animate({"left":"15px"},50)
+                   .animate({"left":"-15px"},50)
+                   .animate({"left":"10px"},50)
+                   .animate({"left":"-10px"},50)
+                   .animate({"left":"5px"},50)
+                   .animate({"left":"-5px"},50)
+                   .animate({"left":"0px"},50)
+    })
 })

@@ -73,7 +73,4 @@ def upload(request):
         return JsonResponse({"status":1})
 
 def test(request):
-    if request.method == 'POST':
-        if request.POST['token'] == '1':
-            return JsonResponse({"url":reverse('d')})
     return render(request,'test.html')
