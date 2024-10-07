@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 class Profile(Model):
     user = ForeignKey(User,on_delete=CASCADE)
     date = DateField(auto_now_add=True)
-    img = ImageField(default='')
-    description = CharField(max_length=1000,null=True)
-    links = CharField(max_length=1000,null=True)
+    img = ImageField(default='defaultpic.jpg')
+    description = CharField(max_length=1000,null=True,blank=True)
+    links = CharField(max_length=1000,null=True,blank=True)
     profiles = Manager()
     date = DateField(auto_now_add=True)
 

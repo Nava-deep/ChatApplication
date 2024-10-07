@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="{% static 'js/profile.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <title>{{request.user.username}} profile</title>
+</head>
+<body>
+    <div id="holder">
+    <img id="pic" src="{{profile.img.url}}">
+    <input type="button" value="Change the pic" id="upload">
+    <form action="{% url 'logout' %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Logout" id="logout">
+    </form>
+    <h2 style="color: white;">{{ profile.user.username }}</h2>
+    </div>
+    <input type="file" id="file" hidden data-url="{% url 'upload' %}" data-csrf="{{csrf_token}}">
+</body>
+</html>

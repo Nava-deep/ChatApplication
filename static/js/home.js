@@ -6,5 +6,4 @@ $(document).ready(()=>{
     a.onmessage = (e)=>{
         console.log('messaged')
     }
-
 })

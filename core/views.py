@@ -38,6 +38,7 @@ def signin(request):
         elif User.objects.filter(email=email).exists():return JsonResponse({"token":2})
         else:
             user = User.objects.create_user(username=username,password=password,email=email)
+            Profile.profiles.create(user=user)
             user.save()
             login(request,user)
             return JsonResponse({"url":reverse('home')})
@@ -72,5 +73,21 @@ def upload(request):
             fs.save(a.name,a)
         return JsonResponse({"status":1})
 
+def profile(request):
+    a = Profile.profiles.get(user=request.user)
+    return render(request,"profile.html",{"profile":a})
+
 def test(request):
     return render(request,'test.html')
+
+def uploads(request):
+    if request.method == 'POST':
+        if request.POST['token'] == '1':
+            fs = FS()
+            p = Profile.profiles.get(user=request.user)
+            r = request.FILES['file']
+            p.img = r.name
+            p.save()
+            if not fs.exists(r.name):
+                fs.save(r.name,r)
+            return JsonResponse({"url":fs.url(r.name)})
