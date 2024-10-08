@@ -6,16 +6,35 @@
     <script src="{% static 'js/profile.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
     <title>{{request.user.username}} profile</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=edit" />
 </head>
 <body>
+    <div class="des" hidden>
+        <div id="loki">
+        <h2 style="color: white;">Change the Description</h2>
+        <input type="text" placeholder="Description" id="des">
+        </div>
+        <div id="loki2">
+        <input type="button" value="Ok" id="ok">
+        <input type="button" value="Cancel" id="cancel">
+        </div>
+    </div> 
     <div id="holder">
     <img id="pic" src="{{profile.img.url}}">
+    <h2 id="name">{{ profile.user.username }}</h2>
+    <h3 id="date">Date Joined: {{ profile.date }}</h3>
     <input type="button" value="Change the pic" id="upload">
-    <form action="{% url 'logout' %}" method="POST">
+    <form method="post" action="{% url 'logout' %}" id="log">
         {% csrf_token %}
-        <input type="submit" value="Logout" id="logout">
+    {% if request.user == profile.user %}
+    <input type="submit" value="Logout" id="l">
+    {% else %}
+    <input type="button" value="Message" id="l">
+    {% endif %}
     </form>
-    <h2 style="color: white;">{{ profile.user.username }}</h2>
+    <p id="para"><b>Description</b><br><br>{{ profile.description }}
+        <span class="material-symbols-outlined">edit</span>
+    </p>
     </div>
     <input type="file" id="file" hidden data-url="{% url 'upload' %}" data-csrf="{{csrf_token}}">
 </body>

@@ -1,77 +1,125 @@
-*{
+* {
     box-sizing: border-box;
 }
 
-html,body{
+html, body {
     background-color: black;
     height: 100%;
     width: 100%;
     margin: 0;
 }
 
-body{
+body {
     display: flex;
     justify-content: center;
 }
 
-#holder{
-    width: 40%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+#holder {
+    width: 500px;
+    height: 70%;
+    display: grid;
+    grid-template-columns: 200px 150px 150px;
+    grid-template-rows: 100px 100px 300px;
+    grid-template-areas:
+    "Pic Name Name"
+    "Pic Change l"
+    "desp desp desp";
     align-items: center;
-    gap: 20px;
-    min-height: 400px;
-    flex-wrap: nowrap;
-    overflow: auto;
-    border: 2px solid red;
+    justify-items: center;
 }
 
-#pic{
-    width: 150px;
-    height: 150px;
+#pic {
     object-fit: cover;
     object-position: 10% 10%;
     border-radius: 300px;
     transition: all 300ms;
-    margin-top: 20px;
+    grid-area: Pic;
+    width: 150px;
+    height: 150px;
 }
 
-#upload{
-    all:unset;
-    padding: 15px;
+#para{
+    color: white;
+    grid-area: desp;
+}
+
+#upload {
+    all: unset;
+    grid-area: Change;
     background-color: rgb(0, 234, 255);
-    width: fit-content;
-    height: 20px;
     text-align: center;
     border-radius: 10px;
     transition: all 200ms;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 20px;
+    cursor: pointer;
+    width: max-content;
+    padding: 10px;
+    height: 20px;
 }
 
-#logout{
+#l{
+    all: unset;
     background-color: red;
     border: none;
-    border-radius: 20px;
-    width: 100px;
-    height: max-content;
-    padding: 5px;
+    border-radius: 10px;
+    width: max-content;
+    padding: 10px;
+    height: 20px;
     font-size: 20px;
     transition: all 200ms;
 }
 
-#logout:hover{
-    cursor: pointer;
-    transform: scale(1.1,1.1);
+#log{
+    grid-area: l;
 }
 
-#pic:hover{
-    cursor:pointer;
-    transform: scale(1.1,1.1);
+.material-symbols-outlined{
+    font-size: 15px !important;
+    transition: all 200ms;
+    width: max-content;
+    padding: 10px;
+    padding-top: 5px;
+    border-radius: 5px;
+    height: 25px;
 }
 
-#upload:hover{
+.material-symbols-outlined:hover{
+    background-color: grey;
     cursor: pointer;
-    transform: scale(1.1,1.1);
+}
+
+#name {
+    position: relative;
+    top: 30px;
+    left: -40px;
+    grid-area: Name;
+    color: white;
+    text-align: center;
+    font-size: 50px;
+}
+
+#date {
+    color: white;
+    position: relative;
+    top: 60px;
+    left: -59px;
+    grid-area: Name;
+    text-align: center;
+    font-size: 15px;
+}
+
+#l:hover {
+    cursor: pointer;
+    transform: scale(1.1, 1.1);
+    box-shadow: 0px 0px 10px 3px red;
+}
+
+#pic:hover {
+    cursor: pointer;
+    transform: scale(1.1, 1.1);
+}
+
+#upload:hover {
+    cursor: pointer;
+    transform: scale(1.1, 1.1);
+    box-shadow: 0px 0px 10px 3px rgb(0, 234, 255);
 }

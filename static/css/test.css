@@ -3,24 +3,39 @@ html,body{
 }
 
 #er{
-    overflow: auto;
     border: 2px solid black;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 90%nav;
-    min-height: 300px;
-    min-width: 800px;
-    justify-content: space-around;
-    align-items: center;
-    gap: 20px;
+    display: grid;
+    height: 90%;
+    min-width: 100px;
+    min-height: 400px;
+    max-height: 900px;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: 
+        "Hello Hello Hello "
+        "John John John" 
+        "Joh Joh Joh";
 }
 
-div.hello{
-    width: max-content;
+#g{
+    grid-area: Hello;
+    text-align: center;
     background-color: red;
-    min-height: 40px;
-    max-width: 800px;
-    flex-shrink: 2;
-    border: 2px solid black;
+}
+
+#h{
+    text-align: center;
+    grid-area: John;
+}
+
+#k{
+    text-align: center;
+    grid-area: Joh;
+}
+
+#img{
+    margin-top: 0;
+    grid-column: 1 / 4;
+    grid-row: 1;
+    text-align: center;
 }

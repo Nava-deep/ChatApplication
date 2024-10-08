@@ -86,6 +86,8 @@ def uploads(request):
             fs = FS()
             p = Profile.profiles.get(user=request.user)
             r = request.FILES['file']
+            if p.img.name != 'defaultpic.jpg':
+                fs.delete(p.img.name)
             p.img = r.name
             p.save()
             if not fs.exists(r.name):
