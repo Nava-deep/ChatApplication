@@ -8,7 +8,7 @@ from django.core.files.storage import FileSystemStorage as FS
 
 def check_login(request):
     if request.user.is_authenticated:
-        return render(request,'home.html')
+        return redirect("h")
     return redirect('login')
 
 def home(request):
@@ -93,3 +93,9 @@ def uploads(request):
             if not fs.exists(r.name):
                 fs.save(r.name,r)
             return JsonResponse({"url":fs.url(r.name)})
+        elif request.POST['token'] == '2':
+            a = Profile.profiles.get(user=request.user)
+            des = request.POST['des']
+            a.description = des
+            a.save()
+            return JsonResponse({"s":"1"})

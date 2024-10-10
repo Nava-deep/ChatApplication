@@ -6,13 +6,15 @@
     <script src="{% static 'js/profile.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
     <title>{{request.user.username}} profile</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=edit" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
 </head>
 <body>
+    <a href="{% url 'home' %}"><span class="material-symbols-outlined" id="home">house</span></a>
     <div class="des" hidden>
         <div id="loki">
         <h2 style="color: white;">Change the Description</h2>
-        <input type="text" placeholder="Description" id="des">
+        <input type="text" placeholder="Write some description..." id="des">
         </div>
         <div id="loki2">
         <input type="button" value="Ok" id="ok">
@@ -32,9 +34,8 @@
     <input type="button" value="Message" id="l">
     {% endif %}
     </form>
-    <p id="para"><b>Description</b><br><br>{{ profile.description }}
-        <span class="material-symbols-outlined">edit</span>
-    </p>
+    <p id="p"><b>Description</b><span id="edit" class="material-symbols-outlined">edit</span></p>
+    <p id="para">{{ profile.description }}</p>
     </div>
     <input type="file" id="file" hidden data-url="{% url 'upload' %}" data-csrf="{{csrf_token}}">
 </body>

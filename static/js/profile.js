@@ -19,46 +19,40 @@ $(document).ready(()=>{
         })
     })
 
-    $(".material-symbols-outlined").on("click",(e)=>{
-        $(".material-symbols-outlined").css("display","none");
-        $(".des").show();
-        $(".des").css({
-            "width":"800px",
-            'height':"200px",
-            "background-color":"black",
-            'position':"absolute",
-            'top':"300px",
-        })
-        $("#loki").css({
-            "display":"flex",
-            "flex-direction":"column",
-            "justify-content":"center",
-            "align-items":"center"
-        });
-        $("#loki2").css({
-            "display":"flex",
-            "gap":"20px",
-            "margin-top":"10px",
-            "justify-content":"center",
-            "align-items":"center"
-        });
+    $("#edit").on("click",(e)=>{
+        $("#edit").css("display","none");
         $("#holder").css({ "filter": "blur(2px)","pointer-events":"none"});
-        $("#des").css({
-            "width":"500px",
-            "height":"40px",
-            "border-radius":"10px",
-        });
-        $("#ok,#cancel").css({
-            "background-color": "black",
-            "border": "1px solid white",
-            "transition": "all 200ms",
-            "width": "max-content",
-            "padding":"10px",
-            "cursor":"pointer",
-            "height": "max-content",
-            "color":"white",
-            "border-radius":"5px",
-            "font-size":"15px",
+        $(".des").show();
+        $("#des").on("focus",(r)=>{
+            $("#des").attr("placeholder","Write some description...")
+        })
+        $("#ok").on("click",(e)=>{
+            e.preventDefault();
+            if($("#des").val()!=""){
+            $.ajax({
+                type: "POST",
+                url: $("#file").data('url'),
+                data: {
+                    'des':$("#des").val(),
+                    "csrfmiddlewaretoken":$("#file").data("csrf"),
+                    "token":"2"
+                },
+                success: (e)=>{
+                    $("#holder").css({ "filter": "blur(0)","pointer-events":"initial"});
+                    $(".des").hide();
+                    $("#edit").css("display","initial");
+                    $("#para").text($("#des").val())
+                }
+            });
+            }
+            else{
+                $("#des").attr("placeholder","Empty description is not allowed")
+            }
+        })
+        $("#cancel").on("click",(e)=>{
+            $("#holder").css({ "filter": "blur(0)","pointer-events":"initial"});
+            $(".des").hide();
+            $("#edit").css("display","initial");
         })
     });
 });

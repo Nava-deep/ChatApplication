@@ -3,39 +3,11 @@ html,body{
 }
 
 #er{
-    border: 2px solid black;
-    display: grid;
-    height: 90%;
-    min-width: 100px;
-    min-height: 400px;
-    max-height: 900px;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto auto;
-    grid-template-areas: 
-        "Hello Hello Hello "
-        "John John John" 
-        "Joh Joh Joh";
-}
-
-#g{
-    grid-area: Hello;
-    text-align: center;
     background-color: red;
+    width: 100px;
+    height: 100px;
 }
 
-#h{
-    text-align: center;
-    grid-area: John;
-}
-
-#k{
-    text-align: center;
-    grid-area: Joh;
-}
-
-#img{
-    margin-top: 0;
-    grid-column: 1 / 4;
-    grid-row: 1;
-    text-align: center;
+.cl{
+    background-color: blue !important;
 }

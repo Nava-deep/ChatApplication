@@ -16,5 +16,12 @@
         <a href="{% url 'profile' %}">Profile</a>
     </div>
     <div id="border"></div>
+    {% for h in chats %}
+        {% for s in h.users %}
+            {% if s != request.user %}
+                <div class="chats" id="{{ h.id }}">{{ s.username }}</div>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
 </body>
 </html>
