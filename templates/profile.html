@@ -10,17 +10,18 @@
 
 </head>
 <body>
-    <a href="{% url 'home' %}"><span class="material-symbols-outlined" id="home">house</span></a>
     <div class="des" hidden>
-        <div id="loki">
+        <div id="enterdes">
         <h2 style="color: white;">Change the Description</h2>
-        <input type="text" placeholder="Write some description..." id="des">
+        <input type="text" placeholder="Write some description" id="des">
         </div>
-        <div id="loki2">
+        <div id="buttons">
         <input type="button" value="Ok" id="ok">
         <input type="button" value="Cancel" id="cancel">
         </div>
-    </div> 
+    </div>
+    {% include 'header.html' %}
+    <div id="mainholder">
     <div id="holder">
     <img id="pic" src="{{profile.img.url}}">
     <h2 id="name">{{ profile.user.username }}</h2>
@@ -34,8 +35,11 @@
     <input type="button" value="Message" id="l">
     {% endif %}
     </form>
+    {% if profile.description %}
     <p id="p"><b>Description</b><span id="edit" class="material-symbols-outlined">edit</span></p>
     <p id="para">{{ profile.description }}</p>
+    {% endif %}
+    </div>
     </div>
     <input type="file" id="file" hidden data-url="{% url 'upload' %}" data-csrf="{{csrf_token}}">
 </body>

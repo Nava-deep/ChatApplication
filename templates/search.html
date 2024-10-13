@@ -4,21 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Search</title>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="{% static 'js/home.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <script src="{% static 'js/search.js' %}"></script>
 </head>
 <body>
     {% include 'header.html' %}
-    <div id="border"></div>
-    {% for h in chats %}
-        {% for s in h.users %}
-            {% if s != request.user %}
-                <div class="chats" id="{{ h.id }}">{{ s.username }}</div>
-            {% endif %}
-        {% endfor %}
-    {% endfor %}
+    <div id="case">
+        <input type="text" id="text" placeholder="Search User" data-get="{% url 'user' %}">
+    </div>
+    <div id="caseflex"></div>
+    <div id="get" hidden data-csrf="{{ csrf_token }}" data-url="{% url 'search' %}"></div>
 </body>
 </html>

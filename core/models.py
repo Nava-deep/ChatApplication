@@ -21,7 +21,6 @@ class Chat(Model):
     date = DateField(auto_now_add=True)
     chats = Manager()
     users = ManyToManyField(User)
-    date = DateField(auto_now_add=True)
 
 class Groups(Model):
     users = ManyToManyField(User,related_name='users')

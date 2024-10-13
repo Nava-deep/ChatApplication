@@ -24,7 +24,7 @@ $(document).ready(()=>{
         $("#holder").css({ "filter": "blur(2px)","pointer-events":"none"});
         $(".des").show();
         $("#des").on("focus",(r)=>{
-            $("#des").attr("placeholder","Write some description...")
+            $("#des").attr("placeholder","Write some description")
         })
         $("#ok").on("click",(e)=>{
             e.preventDefault();

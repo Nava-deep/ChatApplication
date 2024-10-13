@@ -1,3 +1,4 @@
+from django.core import serializers
 from django.shortcuts import render,redirect
 from django.http import JsonResponse
 from django.contrib.auth.models import User
@@ -99,3 +100,30 @@ def uploads(request):
             a.description = des
             a.save()
             return JsonResponse({"s":"1"})
+        
+def lc(request):
+    return render(request,"chats.html")
+
+def search(request):
+    if request.method == 'POST':
+        if request.POST["text"]!="":
+            f = Profile.profiles.filter(user__username__startswith=request.POST['text'])
+            return JsonResponse({"result":serializers.serialize("json",f),"d":True},safe=False)
+        return JsonResponse({"d":False},safe=False)
+    return render(request,"search.html")
+
+def user(request):
+    if request.method == 'POST':
+        return JsonResponse({"user":User.objects.get(id=request.POST['id']).username})
+    
+def pro_get(request,id):
+    return render(request,"pro_get.html",{"profile":Profile.profiles.get(id=id)})
+
+def ch(request,id):
+    h = Chat.chats.filter(users__in = [request.user,User.objects.get(id=id)]).annotate(c=Count("users")).filter(c=2).first()
+    if not h:
+        h = Chat()
+        h.save()
+        h.users.add(request.user,User.objects.get(id=id))
+        h.save()
+    return render(request,"pchat.html",{"pchat":h})

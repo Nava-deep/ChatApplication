@@ -11,5 +11,10 @@ urlpatterns = [
     path('post/',upload,name='post'),
     path('t/',test,name='test'),
     path('profile/',profile,name='profile'),
-    path('upload/',uploads,name='upload')
+    path('profile/<int:id>/',pro_get,name='pro_get'),
+    path('upload/',uploads,name='upload'),
+    path("chats/",lc,name='lc'),
+    path("chat/<int:id>/",ch,name='ch'),
+    path("search/",search,name="search"),
+    path("user/",user,name="user"),
 ]

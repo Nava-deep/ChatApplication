@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <script src="{% static 'js/header.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+</head>
+<body>
+    <div id="header">
+        <a href="{% url 'home' %}"><span class="material-symbols-outlined" id="home">house</span></a>
+        <a href="{% url 'search' %}"><span class="material-symbols-outlined" id="search">search</span></a>
+        <a href="{% url 'lc' %}"><span class="material-symbols-outlined" id="chat">quickreply</span></a>
+        <a href="{% url 'profile' %}"><span class="material-symbols-outlined" id="profile">person</span></a>
+    </div>
+</body>
+</html>
