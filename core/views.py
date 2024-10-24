@@ -1,4 +1,3 @@
-from django.core import serializers
 from django.shortcuts import render,redirect
 from django.http import JsonResponse
 from django.contrib.auth.models import User
@@ -8,9 +7,10 @@ from django.contrib.auth import authenticate,login,logout
 from django.core.files.storage import FileSystemStorage as FS
 
 def check_login(request):
+    c = reverse("login")
     if request.user.is_authenticated:
-        return redirect("h")
-    return redirect('login')
+        c = reverse("home")
+    return render(request,"intro.html",{"url":c})
 
 def home(request):
     pr = Profile.profiles.get(user=request.user)
@@ -42,7 +42,6 @@ def signin(request):
             Profile.profiles.create(user=user)
             user.save()
             login(request,user)
-            print("print",reverse("h"))
             return JsonResponse({"url":reverse('h')})
     return render(request,'signin.html')
 

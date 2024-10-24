@@ -2,18 +2,25 @@
     box-sizing: border-box;
 }
 
-html,body{
+html{
     height: 100%;
-    margin: 0;
 }
 
 body{
+    margin: 0;
     height: 100vh;
     display: flex;
-    background-color: rgb(51,51,51);
     justify-content: center;
     align-items: center;
-    color: white;
+}
+
+#fill{
+    background-image: linear-gradient(to bottom right,red,purple,orange);
+    filter: opacity(0.3);
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
 }
 
 #form{
@@ -22,7 +29,6 @@ body{
     min-height: 400px;
     max-width: 500px;
     min-width: 400px;
-    background-color: rgb(56,56,56);
     box-shadow: 0px 0px 10px black;
     display: flex;
     flex-direction: column;
@@ -33,6 +39,7 @@ body{
     transition: all 100ms;
     flex-wrap: nowrap;
     position: relative;
+    background-color: rgb(238, 236, 236);
 }
 
 input{
@@ -56,25 +63,11 @@ input{
     font-family: "Clarkson", Helvetica, sans-serif;
     border: none;
     cursor: pointer;
-    box-shadow: 0px 0px 5px #00AFFF;
-}
-
-#submit:hover{
-    box-shadow: 0px 0px 10px 2px #00AFFF;
-}
-
-input:focus{
-    border: 5px solid #00AFFF;
 }
 
 input::placeholder{
-    font-size: 20px;
     color: grey;
     font-family: "Clarkson", Helvetica, sans-serif;
-}
-
-.show{
-    display: flex !important;
 }
 
 #u{
