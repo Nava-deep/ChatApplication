@@ -26,9 +26,9 @@ def Login(request):
         user = authenticate(request,username=username,password=password)
         if user:
             login(request,user) 
-            return JsonResponse({"url":reverse('home')})
+            return JsonResponse({"url":reverse('h')})
         return JsonResponse({"token":1})
-    return render(request,'login.html',{'token':2})
+    return render(request,'login.html')
 
 def signin(request):
     if request.method == 'POST':
@@ -42,8 +42,9 @@ def signin(request):
             Profile.profiles.create(user=user)
             user.save()
             login(request,user)
-            return JsonResponse({"url":reverse('home')})
-    return render(request,'signin.html',{'token':3})
+            print("print",reverse("h"))
+            return JsonResponse({"url":reverse('h')})
+    return render(request,'signin.html')
 
 def Logout(request):
     logout(request)
@@ -107,14 +108,17 @@ def lc(request):
 def search(request):
     if request.method == 'POST':
         if request.POST["text"]!="":
-            f = Profile.profiles.filter(user__username__startswith=request.POST['text'])
-            return JsonResponse({"result":serializers.serialize("json",f),"d":True},safe=False)
-        return JsonResponse({"d":False},safe=False)
+            f = Profile.profiles.filter(user__username__startswith=request.POST["text"])
+            d = []
+            for g in f:
+                d.append({
+                    "username":g.user.username,
+                    "user_profile":"/chat/profile/"+str(g.id),
+                    "img_src":"/media/"+str(g.img),
+                    "chat":"/chat/chat/"+str(g.user.id)
+                })
+        return JsonResponse({"result":d},safe=False)
     return render(request,"search.html")
-
-def user(request):
-    if request.method == 'POST':
-        return JsonResponse({"user":User.objects.get(id=request.POST['id']).username})
     
 def pro_get(request,id):
     return render(request,"pro_get.html",{"profile":Profile.profiles.get(id=id)})

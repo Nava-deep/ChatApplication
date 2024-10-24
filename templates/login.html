@@ -10,7 +10,7 @@
     <script src="{% static 'js/login.js' %}"></script>
 </head>
 <body>
-    <form action="." method="POST" >
+    <form action="." method="POST" id="form">
         {% csrf_token %}
         <h1 id="login">Login</h1>
         <input type="text" name="username" placeholder="Username:" id="username">
@@ -19,7 +19,7 @@
         <h3 id="h2" hidden>Password incorrect</h3>
         <input type="submit" value="Submit" id="submit">
         <input type="hidden" value="{{csrf_token}}" id="csrf" data-url="{% url 'login' %}">
-        <h1 id="u">Did'nt have an account <a href="{% url 'signin' %}">Signin Now</a></h1>
+        <h1 id="u">Did'nt have an account <a href="{% url 'signin' %}">Signin</a></h1>
     </form>
 </body>
 </html>

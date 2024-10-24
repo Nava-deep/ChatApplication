@@ -1,13 +1,74 @@
-html,body{
+* {
+    box-sizing: border-box;
+}
+
+html {
     height: 100%;
 }
 
-#er{
-    background-color: red;
-    width: 100px;
-    height: 100px;
+body {
+    height: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
 }
 
-.cl{
-    background-color: blue !important;
+#introduction {
+    font-family: "Clarkson", Helvetica, sans-serif;
+    font-size: 75px;
+    font-weight: 600;
+    color: white;
+    animation: slide 2s forwards 1s;
+    opacity: 0;
+}
+
+#audio{
+    visibility: hidden;
+}
+
+#click{
+    all:unset;
+    font-family: "Clarkson", Helvetica, sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    border: 1px solid white;
+    background-color: white;
+    color: black;
+    cursor:pointer;
+    width: 150px;
+    text-align: center;
+    height: max-content;
+    opacity: 0;
+    visibility: hidden;
+    animation: vis 1s 1 3s;
+    animation-fill-mode: forwards;
+}
+
+#contain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+@keyframes vis {
+    0% {
+        opacity: 0.1;
+        visibility: initial;
+    }
+    100% {
+        opacity: 1;
+        visibility: initial;
+    }
+}
+
+@keyframes slide {
+    0% {
+        opacity: 0.1;
+    }
+    100% {
+        opacity: 1;
+    }
 }

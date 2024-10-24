@@ -11,18 +11,27 @@
     <script src="{% static 'js/signin.js' %}"></script>
 </head>
 <body>
+    <div id="st1"></div>
+    <div id="st2"></div>
+    <!-- <div id="contain">
+        <div id="introduction">ThunderTaks</div>
+        <button id="click"> Enter </button>
+        <audio id="audio" src="/media/energetic-hip-hop-8303.mp3" muted autoplay controls></audio>
+    </div> -->
+    
     <form action="." method="POST" id="form">
         {% csrf_token %}
         <h1 id="signin">Signin</h1>
-        <input type="text" name="username" placeholder="Username:" id="username">
+        <input type="text" name="username" placeholder="Username" id="username">
         <h4 hidden id="h1">Username is already taken</h4>
-        <input type="email" name="email" placeholder="email" id="email">
+        <input type="email" name="email" placeholder="Email" id="email">
         <h4 hidden id="h2">Email is already registered</h4>
 
-        <input type="password" name="password" id="password" placeholder="Password:">
+        <input type="password" name="password" id="password" placeholder="Password">
         <input type="submit" value="Submit" id="submit">
         <input type="hidden" value="{{csrf_token}}" id="csrf" data-url="{% url 'signin' %}">
-        <h1 id="u">Already have an acoount <a href="{% url 'login' %}">Login</a></h1>
+        <h1 id="u">Already have an account <a href="{% url 'login' %}">Login</a></h1>
     </form>
+
 </body>
 </html>

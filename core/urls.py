@@ -16,5 +16,4 @@ urlpatterns = [
     path("chats/",lc,name='lc'),
     path("chat/<int:id>/",ch,name='ch'),
     path("search/",search,name="search"),
-    path("user/",user,name="user"),
 ]

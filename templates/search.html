@@ -13,7 +13,7 @@
 <body>
     {% include 'header.html' %}
     <div id="case">
-        <input type="text" id="text" placeholder="Search User" data-get="{% url 'user' %}">
+        <input type="text" id="text" placeholder="Search User">
     </div>
     <div id="caseflex"></div>
     <div id="get" hidden data-csrf="{{ csrf_token }}" data-url="{% url 'search' %}"></div>

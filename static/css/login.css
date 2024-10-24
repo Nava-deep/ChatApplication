@@ -8,18 +8,22 @@ html,body{
 }
 
 body{
+    height: 100vh;
     display: flex;
+    background-color: rgb(51,51,51);
     justify-content: center;
     align-items: center;
+    color: white;
 }
 
-form{
-    overflow: auto;
+#form{
     width: 35%;
-    height: 70%;
-    min-height: 300px;
+    height: 85%;
+    min-height: 400px;
     max-width: 500px;
-    box-shadow: 0px 0px 5px 1px black;
+    min-width: 400px;
+    background-color: rgb(56,56,56);
+    box-shadow: 0px 0px 10px black;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -28,6 +32,7 @@ form{
     border-radius: 20px;
     transition: all 100ms;
     flex-wrap: nowrap;
+    position: relative;
 }
 
 input{
@@ -38,48 +43,50 @@ input{
     flex-shrink: 0;
     display: block;
     border: 2px solid black;
-    border-radius: 10px;
+    border-radius: 15px;
     font-size: 20px;
     padding-left: 10px;
     transition: all 200ms;
 }
 
 #submit{
-    background-color: skyblue;
-    box-sizing: border-box;
-    border: 0;
+    text-align: center;
+    background-color: rgb(88, 161, 250);
+    font-size: 30px;
+    font-family: "Clarkson", Helvetica, sans-serif;
+    border: none;
     cursor: pointer;
+    box-shadow: 0px 0px 5px #00AFFF;
 }
 
-input::placeholder{
-    color: grey;
-    font-size: 20px;
+#submit:hover{
+    box-shadow: 0px 0px 10px 2px #00AFFF;
 }
 
 input:focus{
-    border: 3px solid skyblue;
+    border: 5px solid #00AFFF;
 }
 
-input:hover{
-    border: 3px solid skyblue;
+input::placeholder{
+    font-size: 20px;
+    color: grey;
+    font-family: "Clarkson", Helvetica, sans-serif;
 }
 
-form:hover{
-    box-shadow: 0px 0px 10px 1px black;
+.show{
+    display: flex !important;
 }
 
-a{
+#u{
+    font-size: 20px ;
+}
+
+#u a{
     text-decoration: none;
-    color: blue;
+    color: violet;
 }
 
 #login{
     font-size: 50px;
     margin-top: -50px;
-}
-
-#u{
-    position: relative;
-    top: 30px;
-    font-size: 20px;
 }

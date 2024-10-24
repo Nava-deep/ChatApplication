@@ -1,21 +1,28 @@
 *{
     box-sizing: border-box;
+}    
+
+html{
+    height: 100%;
 }
 
 body{
     height: 100vh;
     display: flex;
+    background-color: rgb(51,51,51);
     justify-content: center;
     align-items: center;
+    color: white;
 }
 
-form{
-    overflow: auto;
+#form{
     width: 35%;
-    height: 70%;
-    min-height: 300px;
+    height: 85%;
+    min-height: 400px;
     max-width: 500px;
-    box-shadow: 0px 0px 5px 1px black;
+    min-width: 400px;
+    background-color: rgb(56,56,56);
+    box-shadow: 0px 0px 10px black;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,6 +31,20 @@ form{
     border-radius: 20px;
     transition: all 100ms;
     flex-wrap: nowrap;
+    position: relative;
+}
+
+#u{
+    font-size: 20px ;
+}
+
+#u a{
+    text-decoration: none;
+    color: violet;
+}
+
+.show{
+    display: flex !important;
 }
 
 input{
@@ -34,48 +55,91 @@ input{
     flex-shrink: 0;
     display: block;
     border: 2px solid black;
-    border-radius: 10px;
+    border-radius: 15px;
     font-size: 20px;
     padding-left: 10px;
     transition: all 200ms;
 }
 
 #submit{
-    background-color: skyblue;
-    box-sizing: border-box;
-    border: 0;
+    text-align: center;
+    background-color: rgb(88, 161, 250);
+    font-size: 30px;
+    font-family: "Clarkson", Helvetica, sans-serif;
+    border: none;
     cursor: pointer;
+    box-shadow: 0px 0px 5px #00AFFF;
 }
 
-input::placeholder{
-    color: grey;
-    font-size: 20px;
+#submit:hover{
+    box-shadow: 0px 0px 10px 2px #00AFFF;
 }
 
 input:focus{
-    border: 3px solid skyblue;
+    border: 5px solid #00AFFF;
 }
 
-input:hover{
-    border: 3px solid skyblue;
-}
-
-form:hover{
-    box-shadow: 0px 0px 10px 1px black;
-}
-
-a{
-    text-decoration: none;
-    color: blue;
-}
-
-#signin{
-    font-size: 50px;
-    margin-top: -50px;
-}
-
-#u{
-    position: relative;
-    top: 30px;
+input::placeholder{
     font-size: 20px;
+    color: grey;
+    font-family: "Clarkson", Helvetica, sans-serif;
+}
+
+#introduction {
+    font-family: "Clarkson", Helvetica, sans-serif;
+    font-size: 75px;
+    font-weight: 600;
+    color: white;
+    animation: slide 2s forwards 1s;
+    opacity: 0;
+}
+
+#audio{
+    visibility: hidden;
+}
+
+#click{
+    all:unset;
+    margin-top: 20px;
+    font-family: "Clarkson", Helvetica, sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    border: 1px solid white;
+    background-color: white;
+    color: black;
+    cursor:pointer;
+    width: 150px;
+    text-align: center;
+    height: max-content;
+    opacity: 0;
+    visibility: hidden;
+    animation: vis 1s 1 3s;
+    animation-fill-mode: forwards;
+}
+
+#contain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+@keyframes vis {
+    0% {
+        opacity: 0.1;
+        visibility: initial;
+    }
+    100% {
+        opacity: 1;
+        visibility: initial;
+    }
+}
+
+@keyframes slide {
+    0% {
+        opacity: 0.1;
+    }
+    100% {
+        opacity: 1;
+    }
 }

@@ -48,7 +48,6 @@ $(document).ready(()=>{
                                   .animate({"left":"0px"},50)
                 }
                 else{
-
                     window.location.href = z.url;
                 }
             }

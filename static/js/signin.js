@@ -1,4 +1,13 @@
 $(document).ready((e)=>{
+    // $("#click")[0].attributes.disabled = true;
+    // setTimeout((r)=>{
+    //     $("#click")[0].attributes.disabled = false;
+    // },2000)
+    // $("#click").on('click',(t)=>{
+    //     $("#audio")[0].muted = false;
+    //     $("#form").addClass("show")
+    //     $("#contain").hide();
+    // })
 
     $("#username").on("focus click",(e)=>{
         $("#username").css({"border":"2px solid black"});
@@ -10,7 +19,7 @@ $(document).ready((e)=>{
         $("#h2").hide();
     })
 
-    $('#submit').on("submit click",(e)=>{
+    $('#submit').on("click",(e)=>{
         e.preventDefault();
         $.ajax({
             type:"POST",

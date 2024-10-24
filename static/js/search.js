@@ -1,7 +1,14 @@
 $(document).ready(()=>{
-    $("#text").on("input",(r)=>{
+    let typ;
+    $("#text").on("input",function(){
+        if($(this).val()==""){
+            $("#caseflex").empty();
+            return;
+        };
+        clearTimeout(typ)
         f = $("#caseflex");
         f.empty();
+        typ = setTimeout(()=>{
         $.ajax({
             type: "POST",
             url: $("#get").data("url"),
@@ -10,9 +17,7 @@ $(document).ready(()=>{
                 csrfmiddlewaretoken:$("#get").data("csrf"),
             },
             success: (e)=>{
-                if(JSON.parse(e.d)==false){return;}
-                x = JSON.parse(e.result)
-                for(d in x)
+                for(d of e.result)
                 {
                     let r = document.createElement("div");
                     let main = document.createElement("div");
@@ -25,30 +30,21 @@ $(document).ready(()=>{
                     a.className = "outer";
                     t.className = "innerA"
                     main.className = "main";
-                    t.href = "/chat/chat/"+x[d].fields['user'];
-                    img.src = "/media/"+x[d].fields.img;
-                    a.href = '/chat/profile/'+x[d].pk;
-                    $.ajax({
-                        type: "POST",
-                        url: $("#text").data("get"),
-                        data: {
-                            "id":x[d].fields.user,
-                            "csrfmiddlewaretoken":$("#get").data("csrf")
-                        },
-                        success: (q)=>{
-                            g = document.createTextNode(q.user);
-                            r.appendChild(img);
-                            s.appendChild(g)
-                            a.appendChild(s);
-                            r.appendChild(a);
-                            r.appendChild(t)
-                            main.appendChild(r)
-                            f.append(main);
-                        }
-                    });
+                    t.href = d.chat;
+                    img.src = d.img_src;
+                    a.href = d.user_profile;
+                    g = document.createTextNode(d.username);
+                    r.appendChild(img);
+                    s.appendChild(g)
+                    a.appendChild(s);
+                    r.appendChild(a);
+                    r.appendChild(t)
+                    main.appendChild(r)
+                    f.append(main);
                 }
             }
-        });
+        })
+    ,2000});
     })
 
     $("button").on("mouseover",(r)=>{

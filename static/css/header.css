@@ -1,64 +1,37 @@
 *{
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 body{
-    height: 100%;
+    height: 100vh;
     color: white;
-    background-color: black;
+    background-color: rgb(21,19,16);
+    display: flex;
+    justify-content: center;
 }
 
 #header{
     display: flex;
+    position: relative;
     justify-content: space-around;
-    height: 50px;
+    height: 30px;
+    width: 100%;
     align-items: center;
-    border-radius: 30px;
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: 50px;
-    z-index: -1;
     background-color: black;
-    box-shadow: 0px -2px 50px aqua, 0px 2px 30px #e9047e;
-    filter: saturate(200%);
 }
 
-#home{
+#home,#chat,#profile,#search{
     color: white;
     width: max-content;
     height: max-content;
     font-size: 30px;
-    cursor: pointer;
     border-radius: 10px;
     padding: 5px;
+    z-index: 2;
 }
 
-#chat{
-    color: white;
-    width: max-content;
-    height: max-content;
-    font-size: 30px;
-    cursor: pointer;
-    border-radius: 10px;
-    padding: 5px;
-}
-
-#profile{
-    color: white;
-    width: max-content;
-    height: max-content;
-    font-size: 30px;
-    cursor: pointer;
-    border-radius: 10px;
-    padding: 5px;
-}
-
-#search{
-    color: white;
-    width: max-content;
-    height: max-content;
-    font-size: 30px;
-    cursor: pointer;
-    border-radius: 10px;
-    padding: 5px;
+#home:hover,#chat:hover,#profile:hover,#search:hover{
+    cursor:pointer;
 }
